@@ -1,10 +1,12 @@
 package com.example.myProject.user.model.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "users") // testing in progress..
+@Data
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,6 +14,4 @@ public class UserRole {
 
     private String role;
 
-    @OneToMany
-    private Set<User> users;
 }
