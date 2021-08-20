@@ -12,7 +12,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-
+    private String lastName;
+    private String login;
+    private String password;
     @ManyToOne
     @JoinColumn(name = "id_role", nullable = false)//@JoinColumn(name="users_id") //testing in progress...
     private UserRole userRole;

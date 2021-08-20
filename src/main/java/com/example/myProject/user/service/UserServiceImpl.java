@@ -1,5 +1,6 @@
 package com.example.myProject.user.service;
 
+import com.example.myProject.user.model.DTO.UserDTO;
 import com.example.myProject.user.model.entity.User;
 import com.example.myProject.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,15 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
-
     @Override
-    public void createUser(User user) {
+    public void createUser(UserDTO userDto, String password) {
+        User user = new User();
+        user.setUserRole(userDto.getUserRole());
+        user.setId(userDto.getId());
+        user.setName(userDto.getName());
+        user.setLastName(userDto.getLastName());
+        user.setLogin(userDto.getLogin());
+        user.setPassword(password);
         userRepository.save(user);    }
 
     @Override

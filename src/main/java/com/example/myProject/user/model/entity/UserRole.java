@@ -5,13 +5,12 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users") // testing in progress..
+@Table(name = "users")
 @Data
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_role;
-
     private String role;
 
 }
