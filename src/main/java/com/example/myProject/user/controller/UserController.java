@@ -1,31 +1,41 @@
 package com.example.myProject.user.controller;
 
 import com.example.myProject.user.model.entity.User;
-import com.example.myProject.user.repository.UserRepository;
+import com.example.myProject.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class UserController{
+public class UserController {
     @Autowired
-    UserRepository userRepository;
+    UserService userRepo;
 
 
     @GetMapping(value = "/users")
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public ResponseEntity<Object> getAllUsers() {
+        return new ResponseEntity<>(userRepo.getUsers(), HttpStatus.OK);
     }
 
-    @PostMapping("/employees")
-    User createOrSaveEmployee(@RequestBody User user) {
+    @PostMapping("/users")
+    public ResponseEntity<Object> createOrSaveUser(@RequestBody User user) {
+        userRepo.createUser(user);
+        return new ResponseEntity<>("User is added successfully", HttpStatus.CREATED);
+    }
 
-
-        return userRepository.save(user);
+    @PostMapping(value = "/users/{id}")
+    public ResponseEntity<Object>
+    updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+        userRepo.updateUser(id, user);
+        return new ResponseEntity<>("User is updated successsfully", HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/users/{id}")
+    public ResponseEntity<Object> delete(@PathVariable("id") Long id) {
+        userRepo.deleteUser(id);
+        return new ResponseEntity<>("User is deleted successsfully", HttpStatus.OK);
     }
 
 }
