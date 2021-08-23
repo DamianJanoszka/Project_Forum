@@ -15,8 +15,8 @@ public class User {
     private String lastName;
     private String login;
     private String password;
-    @ManyToOne
-    @JoinColumn(name = "id_role", nullable = false)//@JoinColumn(name="users_id") //testing in progress...
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_role") // nullable = false
     private UserRole userRole;
 
 }

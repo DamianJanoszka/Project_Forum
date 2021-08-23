@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userDto.getLastName());
         user.setLogin(userDto.getLogin());
         user.setPassword(password);
+        // id_role ustawic jakos
         userRepository.save(user);    }
 
     @Override
