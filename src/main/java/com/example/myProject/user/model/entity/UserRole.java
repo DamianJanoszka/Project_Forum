@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_role")
     private Long idRole;
     private String role;
 }

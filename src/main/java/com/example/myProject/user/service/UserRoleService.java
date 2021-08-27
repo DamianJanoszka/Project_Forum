@@ -9,4 +9,5 @@ public interface UserRoleService {
 
     List<UserRoleDTO> getUserRoles();
     UserRoleDTO getById(Long id);
+    UserRole getUserRoleEntityById(Long id);
 }

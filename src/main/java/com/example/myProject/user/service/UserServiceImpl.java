@@ -18,15 +18,16 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    UserRoleRepository userRoleRepository;
+    UserRoleServiceImpl userRoleServiceImpl;
     @Override
     public void createUser(UserDTO userDto, String password) {
         User user = new User();
-        user.setUserRole(userRoleRepository.getById(userDto.getUserRoleDTO().getIdRole()));
         user.setName(userDto.getName());
         user.setLastName(userDto.getLastName());
         user.setLogin(userDto.getLogin());
         user.setPassword(password);
+        UserRole userRole = userRoleServiceImpl.getUserRoleEntityById(userDto.getUserRole().getIdRole());
+        user.setUserRole(userRole);
         userRepository.save(user);    }
 
     @Override

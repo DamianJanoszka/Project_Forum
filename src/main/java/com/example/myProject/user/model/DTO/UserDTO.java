@@ -16,5 +16,5 @@ public class UserDTO {
     private String name;
     private String lastName;
     private String login;
-    private UserRoleDTO userRoleDTO;
+    private UserRoleDTO userRole;
 }

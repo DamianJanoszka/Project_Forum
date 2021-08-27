@@ -12,6 +12,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper( UserMapper.class );
+    @Mapping(source="user.userRole", target="userRole")
     UserDTO userToUserDTO(User user);
     void updateUserFromDto(UserDTO userDTO, @MappingTarget User user);
     List<UserDTO> userListToUserDTOList(List<User> commonUsers);
