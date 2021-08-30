@@ -20,7 +20,7 @@ public class User {
     private String login;
     private String password;
     @ManyToOne
-    @JoinColumn(name = "id_role") // nullable = false
+    @JoinColumn(name = "id_role")
     private UserRole userRole;
 
 }
