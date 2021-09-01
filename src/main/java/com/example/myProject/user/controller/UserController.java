@@ -45,4 +45,16 @@ public class UserController {
         return new ResponseEntity<>("User is deleted successfully", HttpStatus.OK);
     }
 
+    @GetMapping(value = "/moderator")
+    public String
+    moderator() {
+        return ("<h1>Moderator<h1>");
+    }
+
+    @GetMapping(value = "/admin")
+    public String
+    admin() {
+        return ("<h1>Admin<h1>");
+    }
+
 }

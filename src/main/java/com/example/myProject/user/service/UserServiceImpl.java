@@ -6,7 +6,7 @@ import com.example.myProject.user.model.entity.UserRole;
 import com.example.myProject.user.repository.UserRepository;
 import com.example.myProject.user.service.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,15 +17,16 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
     @Autowired
     UserRoleServiceImpl userRoleServiceImpl;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    private PasswordEncoderFactories passwordEncoder;
     @Override
     public void createUser(UserDTO userDto, String password) {
         User user = new User();
         user.setName(userDto.getName());
         user.setLastName(userDto.getLastName());
         user.setLogin(userDto.getLogin());
-        user.setPassword(passwordEncoder.createDelegatingPasswordEncoder().encode(password));
+        user.setPassword(passwordEncoder.encode(password));
         UserRole userRole = userRoleServiceImpl.getUserRoleEntityById(userDto.getUserRole().getIdRole());
         user.setUserRole(userRole);
         userRepository.save(user);    }
