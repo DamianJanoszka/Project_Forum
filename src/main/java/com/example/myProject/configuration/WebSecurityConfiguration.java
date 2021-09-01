@@ -1,4 +1,4 @@
-package com.example.myProject.user.configuration;
+package com.example.myProject.configuration;
 
 import com.example.myProject.user.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
