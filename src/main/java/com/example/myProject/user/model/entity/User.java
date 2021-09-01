@@ -17,6 +17,7 @@ public class User {
     private Long id;
     private String name;
     private String lastName;
+    @Column(unique=true)
     private String login;
     private String password;
     @ManyToOne
