@@ -5,7 +5,7 @@ import com.example.myProject.user.model.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.text.DateFormat;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -25,6 +25,6 @@ public class Thread {
     private Board board;
     @OneToMany(mappedBy = "thread")
     private List<Post> postList;
-    private final DateFormat created;
-    private DateFormat lastUpdated;
+    private LocalDateTime created;
+    private LocalDateTime lastUpdated;
 }

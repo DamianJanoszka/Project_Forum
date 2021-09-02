@@ -5,6 +5,8 @@ import com.example.myProject.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,4 +59,18 @@ public class UserController {
         return ("<h1>Admin<h1>");
     }
 
+    @RequestMapping("/welcome")
+    public String welcome() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = "Welcome ";
+        if (principal instanceof UserDetails) {
+            username += ((UserDetails)principal).getUsername();
+        }
+        else {
+            username += principal.toString();
+        }
+        username += "! You are the ";
+        username += ((UserDetails)principal).getAuthorities().toString();
+        return username;
+    }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.text.DateFormat;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "posts")
@@ -22,6 +23,6 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "id_thread")
     private Thread thread;
-    private final DateFormat created;
-    private DateFormat lastUpdated;
+    private LocalDateTime created;
+    private LocalDateTime lastUpdated;
 }

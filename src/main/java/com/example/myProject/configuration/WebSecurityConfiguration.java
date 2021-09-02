@@ -50,7 +50,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/moderator").hasAuthority("Moderator")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin().defaultSuccessUrl("/users/welcome", true)
                 .and()
                 .logout().deleteCookies("JSESSIONID").invalidateHttpSession(true);
     }
