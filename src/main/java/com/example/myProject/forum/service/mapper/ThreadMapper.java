@@ -12,8 +12,8 @@ import java.util.List;
 @Mapper
 public interface ThreadMapper {
     ThreadMapper INSTANCE = Mappers.getMapper(ThreadMapper.class);
-    @Mapping(source="thread.author", target="author")
-    @Mapping(source="thread.board", target="board")
+    @Mapping(source="thread.author.id", target="idAuthor")
+    @Mapping(source="thread.board.id", target="idBoard")
     @Mapping(source="thread.postList", target="postList")
     ThreadDTO threadToThreadDTO(Thread thread);
     void updateThreadFromDto(ThreadDTO threadDTO, @MappingTarget Thread thread);

@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 public class PostDTO {
     private Long id;
     private String content;
-    private UserDTO author;
-    private ThreadDTO thread;
+    private Long idAuthor;
+    private Long idThread;
     private Instant created = Instant.now();
     private LocalDateTime lastUpdated;
 }

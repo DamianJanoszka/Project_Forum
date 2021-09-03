@@ -12,8 +12,8 @@ import java.util.List;
 @Mapper
 public interface PostMapper {
     PostMapper INSTANCE = Mappers.getMapper( PostMapper.class );
-    @Mapping(source="post.author", target="author")
-    @Mapping(source = "post.thread", target = "thread")
+    @Mapping(source="post.author.id", target="idAuthor")
+    @Mapping(source = "post.thread.id", target = "idThread")
     PostDTO postToPostDTO(Post post);
     void updatePostFromDto(PostDTO postDTO, @MappingTarget Post post);
     List<PostDTO> postListToPostDTOList(List<Post> postList);

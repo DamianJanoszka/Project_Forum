@@ -11,9 +11,9 @@ import java.util.List;
 public class ThreadDTO {
     private Long id;
     private String title;
-    private UserDTO author;
+    private Long idAuthor;
     private String content;
-    private BoardDTO board;
+    private Long idBoard;
     private List<PostDTO> postList;
     private Instant created = Instant.now();
     private LocalDateTime lastUpdated;
