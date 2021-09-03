@@ -1,11 +1,10 @@
 package com.example.myProject.forum.model.entity;
 
-
 import com.example.myProject.user.model.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.text.DateFormat;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,6 +22,6 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "id_thread")
     private Thread thread;
-    private LocalDateTime created;
+    private Instant created;
     private LocalDateTime lastUpdated;
 }

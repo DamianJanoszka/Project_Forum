@@ -2,9 +2,11 @@ package com.example.myProject.forum.model.entity;
 
 
 import com.example.myProject.user.model.entity.User;
+import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +18,9 @@ public class Thread {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_thread")
     private Long id;
+    @NotNull
     private String title;
+    private String content;
     @ManyToOne
     @JoinColumn(name = "id")
     private User author;
@@ -25,6 +29,6 @@ public class Thread {
     private Board board;
     @OneToMany(mappedBy = "thread")
     private List<Post> postList;
-    private LocalDateTime created;
+    private Instant created;
     private LocalDateTime lastUpdated;
 }
