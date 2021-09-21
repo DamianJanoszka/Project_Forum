@@ -7,7 +7,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -24,11 +23,11 @@ public class Thread {
     @ManyToOne
     @JoinColumn(name = "id")
     private User author;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "id_board")
     private Board board;
-    @OneToMany(mappedBy = "thread")
+    @OneToMany(mappedBy = "thread", cascade=CascadeType.ALL)
     private List<Post> postList;
     private Instant created;
-    private LocalDateTime lastUpdated;
+    private Instant lastUpdated;
 }

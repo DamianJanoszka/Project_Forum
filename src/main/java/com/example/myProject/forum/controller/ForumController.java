@@ -50,4 +50,23 @@ public class ForumController {
         threadService.createThread(threadDTO, idAuthor, idBoard);
         return new ResponseEntity<>("Thread is added successfully", HttpStatus.CREATED);
     }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<List<PostDTO>> getPostsByAuthorId(@PathVariable("id") Long idAuthor) {
+        return new ResponseEntity<>(postService.getPostsByAuthorId(idAuthor), HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/post/{id}")
+    public ResponseEntity<String> deletePost(@PathVariable("id") Long id) {
+        postService.deletePost(id);
+        return new ResponseEntity<>("Post is deleted successfully", HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/thread/{id}")
+    public ResponseEntity<String> deleteThread(@PathVariable("id") Long id) {
+        threadService.deleteThread(id);
+        return new ResponseEntity<>("Thread is deleted successfully", HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/board/{id}")
+    public ResponseEntity<String> deleteBoard(@PathVariable("id") Long id) {
+        boardService.deleteBoard(id);
+        return new ResponseEntity<>("Board is deleted successfully", HttpStatus.OK);
+    }
 }

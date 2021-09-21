@@ -17,6 +17,6 @@ public class Board {
     private Long id;
     @NotNull
     private String title;
-    @OneToMany(mappedBy="board")
+    @OneToMany(mappedBy="board", cascade=CascadeType.ALL)
     private List<Thread> threadList;
 }

@@ -9,4 +9,5 @@ public interface PostService {
     PostDTO getById(Long id);
     void deletePost(Long id);
     void createPost(PostDTO postDTO, Long idAuthor, Long idThread);
+    List<PostDTO> getPostsByAuthorId(Long idAuthor);
 }

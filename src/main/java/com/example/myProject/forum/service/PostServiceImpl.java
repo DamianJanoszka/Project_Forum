@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService{
@@ -24,6 +25,11 @@ public class PostServiceImpl implements PostService{
         return PostMapper.INSTANCE.postListToPostDTOList(postRepo.findAll());
     }
 
+    @Override
+    public List<PostDTO> getPostsByAuthorId(Long idAuthor){
+        List<PostDTO> postDTOList = getPosts().stream().filter(x->x.getIdAuthor()==idAuthor).collect(Collectors.toList());
+        return postDTOList;
+    }
     @Override
     public PostDTO getById(Long id) {
         return PostMapper.INSTANCE.postToPostDTO(postRepo.getById(id));
@@ -41,6 +47,7 @@ public class PostServiceImpl implements PostService{
         post.setThread(threadRepo.getById(idThread));
         post.setContent(postDTO.getContent());
         post.setCreated(postDTO.getCreated());
+        post.setLastUpdated((postDTO.getLastUpdated()));
         postRepo.save(post);
     }
 }

@@ -5,7 +5,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "posts")
@@ -19,9 +18,9 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "id")
     private User author;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "id_thread")
     private Thread thread;
     private Instant created;
-    private LocalDateTime lastUpdated;
+    private Instant lastUpdated;
 }

@@ -45,7 +45,7 @@ public class ThreadServiceImpl implements ThreadService {
         thread.setTitle(threadDTO.getTitle());
         thread.setContent(threadDTO.getContent());
         thread.setCreated(threadDTO.getCreated());
-        boardService.addThreadsToBoard(thread,idBoard);
+        thread.setLastUpdated(threadDTO.getLastUpdated());
         threadRepo.save(thread);
     }
 
