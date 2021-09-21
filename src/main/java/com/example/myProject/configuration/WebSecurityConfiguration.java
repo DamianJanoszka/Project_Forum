@@ -4,6 +4,7 @@ import com.example.myProject.user.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -48,6 +49,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/users/admin").hasAuthority("Admin")
                 .antMatchers("/users/moderator").hasAuthority("Moderator")
+                .antMatchers(HttpMethod.DELETE,"/forum/board/*","/users/*").hasAnyAuthority("Admin","Moderator")
+                .antMatchers(HttpMethod.POST,"/forum/board","/users").hasAnyAuthority("Admin","Moderator")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().defaultSuccessUrl("/users/welcome", true)

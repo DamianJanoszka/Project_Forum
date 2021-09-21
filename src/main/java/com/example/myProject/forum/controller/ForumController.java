@@ -50,7 +50,7 @@ public class ForumController {
         threadService.createThread(threadDTO, idAuthor, idBoard);
         return new ResponseEntity<>("Thread is added successfully", HttpStatus.CREATED);
     }
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/posts/{id}")
     public ResponseEntity<List<PostDTO>> getPostsByAuthorId(@PathVariable("id") Long idAuthor) {
         return new ResponseEntity<>(postService.getPostsByAuthorId(idAuthor), HttpStatus.OK);
     }
