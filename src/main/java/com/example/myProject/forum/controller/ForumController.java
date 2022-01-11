@@ -27,6 +27,7 @@ public class ForumController {
     public ResponseEntity<List<PostDTO>> getAllPosts() {
         return new ResponseEntity<>(postService.getPosts(), HttpStatus.OK);
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public ResponseEntity<List<BoardDTO>> getAllBoards() {
         return new ResponseEntity<>(boardService.getBoards(), HttpStatus.OK);
