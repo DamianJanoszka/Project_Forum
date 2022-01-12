@@ -8,12 +8,12 @@ import { Post } from './Post';
 })
 export class PostService {
 
-  private url = 'http://localhost:8080/forum/post';
+  private url = 'http://localhost:4200/forum/thread';
 
   constructor(private http: HttpClient) { }
 
-    getPosts(): Observable<any> {
-      return this.http.get(`${this.url}`);
+    getPosts(): Observable<Post[]> {
+      return this.http.get<Post[]>(`${this.url}`);
     }
     addPost(post: Post): Observable<Object> {
       return this.http.post(`${this.url}`, post);

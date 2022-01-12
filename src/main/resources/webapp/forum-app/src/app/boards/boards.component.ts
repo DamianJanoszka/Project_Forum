@@ -18,7 +18,6 @@ export class BoardsComponent implements OnInit {
     this.boardService.getBoards().subscribe(boards => this.boards = boards);
     }
   ngOnInit(): void {
-  this.getBoards();
   }
 
 }

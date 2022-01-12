@@ -8,12 +8,12 @@ import { Thread } from './Thread';
 })
 export class ThreadService {
 
-  private url = 'http://localhost:8080/forum/thread/';
+  private url = 'http://localhost:4200/forum/board/';
 
   constructor(private http: HttpClient) { }
 
-    getThreads(): Observable<any> {
-      return this.http.get(`${this.url}`);
+    getThreads(): Observable<Thread[]> {
+      return this.http.get<Thread[]>(`${this.url}`);
     }
 
     addThread(thread: Thread): Observable<Object> {

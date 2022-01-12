@@ -1,3 +1,21 @@
-<p>html from add-board componentt</p>
-
+<p>html from "boards" component</p>
+<div class="container">
 <button (click)="getBoards()">get boards</button>
+<div *ngIf="boards.length > 0">
+<table class="table" style="width: 80%">
+  <tr>
+    <th>Title</th>
+    <th>id</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let board of boards">
+    <td>
+      {{board.title}}
+    </td>
+    <td>
+      {{board.id}}
+    </td>
+  </tr>
+</table>
+</div>
+</div>

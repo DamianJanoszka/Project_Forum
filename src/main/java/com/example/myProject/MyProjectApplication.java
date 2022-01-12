@@ -14,7 +14,7 @@ public class MyProjectApplication {
 		SpringApplication.run(MyProjectApplication.class, args);
 	}
 
-	@Bean
+/*	@Bean
 	public WebMvcConfigurer corsConfigurer(){
 		return new WebMvcConfigurer() {
 			@Override
@@ -22,5 +22,5 @@ public class MyProjectApplication {
 				registry.addMapping("/forum").allowedOrigins("http://localhost:4200");
 			}
 		};
-	}
+	} */
 }
